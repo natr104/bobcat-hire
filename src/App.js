@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import AppBarExample from './components/AppBarExample'
+import CustomerQuotes from './components/CustomerQuotes';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       </header>
       <main>
         <h1>Hello world</h1>
+        <CustomerQuotes />
       </main>
     </div>
   );

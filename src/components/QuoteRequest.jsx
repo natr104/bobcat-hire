@@ -5,4 +5,4 @@ export default function QuoteRequest() {
     return (
         <h2>Quote</h2>
     );
-}
+} 

@@ -1,13 +1,13 @@
 import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Typography, Paper } from "@mui/material";
 
-function createData(id, date, address, type, note, hours, price) {
-    return { id, date, address, type, note, hours, price };
+function createData(id, date_time, address, type, note, hours, price) {
+    return { id, date_time, address, type, note, hours, price };
   }
 
 const rows = [
     createData(
         0,
-        '10 Aug, 2022',
+        '09:30 AM 15 Aug 2022',
         '123 Fake Street, Sydney',
         "Pool",
         "Difficult access to property",
@@ -24,7 +24,7 @@ export default function CustomerQuotesTable() {
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Date</TableCell>
+                        <TableCell>Date & Time</TableCell>
                         <TableCell>Address</TableCell>
                         <TableCell>Type</TableCell>
                         <TableCell>Note</TableCell>
@@ -35,7 +35,7 @@ export default function CustomerQuotesTable() {
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell>{row.date}</TableCell>
+                            <TableCell>{row.date_time}</TableCell>
                             <TableCell>{row.address}</TableCell>
                             <TableCell>{row.type}</TableCell>
                             <TableCell>{row.note}</TableCell>

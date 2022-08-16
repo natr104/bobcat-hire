@@ -1,6 +1,8 @@
+import { Container } from '@mui/material';
 import './App.css';
 import AppBarExample from './components/AppBarExample'
 import CustomerQuotes from './components/CustomerQuotes';
+import LoginPage from './components/LoginPage';
 
 function App() {
   return (
@@ -8,10 +10,10 @@ function App() {
       <header>
         <AppBarExample />
       </header>
-      <main>
-        <h1>Hello world</h1>
-        <CustomerQuotes />
-      </main>
+      <Container component='main' sx={{ height: '100%' }}>
+        {/* <h1>Hello world</h1> */}
+        <LoginPage />
+      </Container>
     </div>
   );
 }

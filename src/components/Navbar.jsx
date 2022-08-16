@@ -11,6 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link as RouterLink } from 'react-router-dom'
+import { Link } from '@mui/material';
+// import Link from '@mui/material/Link';
 
 
 const pages = ['Services', 'Request Quote', 'Contact Us'];
@@ -42,8 +45,8 @@ const Navbar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={RouterLink}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -112,7 +115,7 @@ const Navbar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -120,7 +123,8 @@ const Navbar = () => {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
+            <Link component={RouterLink} to='/request_quote' variant="body2" underline="none" sx={{ my: 2, color: 'white', display: 'block' }}>REQUEST QUOTE</Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function LoginPage() {
   return (
@@ -13,11 +14,11 @@ export default function LoginPage() {
       <Paper
         elevation={3}
         sx={{
-          marginTop: '20vh',
+          marginTop: ['20vh','15vh'],
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          p: 2
+          p: 3
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -56,8 +57,7 @@ export default function LoginPage() {
             Sign In
           </Button>
           <br />
-          <Link href="/register" variant="body2">Don't have an account? Sign Up</Link>
-
+          <Link component={RouterLink} to="/register" variant="body2">Don't have an account? Sign Up!</Link>
         </Box>
       </Paper>
     </Box>

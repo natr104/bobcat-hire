@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 const pages = ['Services', 'Request Quote', 'Contact Us'];
 const settings = ['Account', 'Your Quotes', 'Logout'];
 
-const AppBarExample = () => {
+const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -157,4 +157,4 @@ const AppBarExample = () => {
     </AppBar>
   );
 };
-export default AppBarExample;
+export default Navbar;

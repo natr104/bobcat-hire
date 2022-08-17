@@ -8,13 +8,12 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink } from 'react-router-dom'
 import { Link } from '@mui/material';
-// import Link from '@mui/material/Link';
-
+import { useDispatch } from 'react-redux';
+import { logout } from '../actions/auth';
 
 const pages = ['Services', 'Request Quote', 'Contact Us'];
 const settings = ['Account', 'Your Quotes', 'Logout'];
@@ -22,6 +21,12 @@ const settings = ['Account', 'Your Quotes', 'Logout'];
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const dispatch = useDispatch();
+
+  const logOut = () => {
+    dispatch(logout());
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -143,7 +148,12 @@ const Navbar = () => {
               <Link component={RouterLink} to='/profile' textAlign="center" color="inherit" underline="none">
                 <MenuItem key={'Account'} onClick={handleCloseUserMenu}>Account</MenuItem>
               </Link> 
-              
+              <Link component={RouterLink} to='/' textAlign="center" color="inherit" underline="none">
+                <MenuItem key={'Your Quotes'} onClick={handleCloseUserMenu}>Your Quotes</MenuItem>
+              </Link> 
+              <Link component={RouterLink} to='/login' textAlign="center" color="inherit" underline="none">
+                <MenuItem key={'Logout'} onClick={logOut}>Logout</MenuItem>
+              </Link>
             </Menu>
           </Box>
         </Toolbar>

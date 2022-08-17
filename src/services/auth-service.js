@@ -19,13 +19,15 @@ const login = (email, password) => {
     .then((response) => {
       console.log(response)
       if (response.data.jwt) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("jwt", JSON.stringify(response.data.jwt));
       }
       return response.data;
     });
 };
 const logout = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("jwt");
 };
 export default {
   register,

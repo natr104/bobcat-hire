@@ -12,15 +12,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink } from 'react-router-dom'
 import { Link } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../actions/auth';
 
 const pages = ['Services', 'Request Quote', 'Contact Us'];
-const settings = ['Account', 'Your Quotes', 'Logout'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { user: currentUser } = useSelector((state) => state.auth)
 
   const dispatch = useDispatch();
 
@@ -148,7 +148,7 @@ const Navbar = () => {
               <Link component={RouterLink} to='/profile' textAlign="center" color="inherit" underline="none">
                 <MenuItem key={'Account'} onClick={handleCloseUserMenu}>Account</MenuItem>
               </Link> 
-              <Link component={RouterLink} to='/' textAlign="center" color="inherit" underline="none">
+              <Link component={RouterLink} to='/your_quotes' textAlign="center" color="inherit" underline="none">
                 <MenuItem key={'Your Quotes'} onClick={handleCloseUserMenu}>Your Quotes</MenuItem>
               </Link> 
               <Link component={RouterLink} to='/login' textAlign="center" color="inherit" underline="none">

@@ -3,14 +3,19 @@ import { useSelector } from "react-redux"
 
 export default function Profile() {
     
-    const { user: { user: currentUser } } = useSelector((state) => state.auth);
+    const { user: currentUser } = useSelector((state) => state.auth);
     if (!currentUser) {
         return <Navigate to='/login' />
     }
+    const user = currentUser.user
 
     return (
+        <>
         <h3>
-            {currentUser.name}'s Profile
+            {user.name}'s Profile
         </h3>
+        <p>{user.email}</p>
+        
+        </>
     )
 }

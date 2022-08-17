@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Register from './components/Register';
 import QuoteRequest from './components/QuoteRequest'
 import Profile from './components/Profile';
+import CustomerQuotes from './components/CustomerQuotes';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<Register />} />
           <Route path='request_quote' element={<QuoteRequest />} />
-          <Route path='profile' element={<Profile />} />
+          <Route path='user' element={<Profile />} />
+          <Route path='your_quotes' element={<CustomerQuotes />} />
+          
         </Route>
 
       </Routes>

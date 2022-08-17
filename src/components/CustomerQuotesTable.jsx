@@ -1,25 +1,15 @@
 import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Typography, Paper } from "@mui/material";
+import { useSelector } from "react-redux";
 
-function createData(id, date_time, address, type, note, hours, price) {
-    return { id, date_time, address, type, note, hours, price };
-  }
 
-const rows = [
-    createData(
-        0,
-        '09:30 AM 15 Aug 2022',
-        '123 Fake Street, Sydney',
-        "Pool",
-        "Difficult access to property",
-        8,
-        720.00        
-    )
-]
 
 export default function CustomerQuotesTable() {
 
+    const { user: currentUser } = useSelector((state) => state.auth)
+    const user_jobs = currentUser.user.jobs
+
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ mt: 8 }}>
             <Typography component="h2" variant="h6" color="primary" gutterBottom>Your Quotes</Typography>
             <Table size="small">
                 <TableHead>
@@ -33,14 +23,14 @@ export default function CustomerQuotesTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {user_jobs.map((row) => (
                         <TableRow key={row.id}>
                             <TableCell>{row.date_time}</TableCell>
                             <TableCell>{row.address}</TableCell>
-                            <TableCell>{row.type}</TableCell>
-                            <TableCell>{row.note}</TableCell>
-                            <TableCell>{row.hours}</TableCell>
-                            <TableCell align="right">{`$${row.price}`}</TableCell>
+                            <TableCell>{row.category}</TableCell>
+                            <TableCell>{row.comment}</TableCell>
+                            {/* <TableCell>{row.hours}</TableCell>
+                            <TableCell align="right">{`$${row.price}`}</TableCell> */}
                         </TableRow>
                     ))}
                 </TableBody>

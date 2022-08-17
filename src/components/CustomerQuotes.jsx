@@ -4,8 +4,8 @@ import { Container } from "@mui/material";
 
 export default function CustomerQuotes() {
     return (
-        <Container>
+       
             <CustomerQuotesTable />
-        </Container>
+        
     )
 }

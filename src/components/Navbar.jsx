@@ -140,11 +140,10 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <Link component={RouterLink} to='/profile' textAlign="center" color="inherit" underline="none">
+                <MenuItem key={'Account'} onClick={handleCloseUserMenu}>Account</MenuItem>
+              </Link> 
+              
             </Menu>
           </Box>
         </Toolbar>

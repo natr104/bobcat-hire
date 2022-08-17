@@ -1,0 +1,16 @@
+import { Navigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+
+export default function Profile() {
+    
+    const { user: { user: currentUser } } = useSelector((state) => state.auth);
+    if (!currentUser) {
+        return <Navigate to='/login' />
+    }
+
+    return (
+        <h3>
+            {currentUser.name}'s Profile
+        </h3>
+    )
+}

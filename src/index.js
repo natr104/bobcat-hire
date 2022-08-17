@@ -7,17 +7,17 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './utilities/store'
+import store from './store'
 
 
 const theme = createTheme({
   palette: {
       type: 'light',
       primary: {
-        main: '#eb502e',
+        main: '#d84a2b',
       },
       secondary: {
-        main: '#f50057',
+        main: '#747b40',
       },
     },
 })

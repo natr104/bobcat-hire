@@ -17,7 +17,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<Register />} />
           <Route path='request_quote' element={<QuoteRequest />} />
-          <Route path='user' element={<Profile />} />
+          <Route path='profile' element={<Profile />} />
           <Route path='your_quotes' element={<CustomerQuotes />} />
           
         </Route>

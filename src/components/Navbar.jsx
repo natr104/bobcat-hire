@@ -25,6 +25,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const logOut = () => {
+    handleCloseUserMenu();
     dispatch(logout());
   };
 

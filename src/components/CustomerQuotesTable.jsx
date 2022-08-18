@@ -27,7 +27,7 @@ export default function CustomerQuotesTable() {
                         <TableRow key={row.id}>
                             <TableCell>{row.date_time}</TableCell>
                             <TableCell>{row.address}</TableCell>
-                            <TableCell>{row.category}</TableCell>
+                            <TableCell>{row.category_id}</TableCell>
                             <TableCell>{row.comment}</TableCell>
                             {/* <TableCell>{row.hours}</TableCell>
                             <TableCell align="right">{`$${row.price}`}</TableCell> */}

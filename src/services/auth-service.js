@@ -13,7 +13,6 @@ const register = (email, name, password, password_confirmation, phone_no, addres
     }
   })
   .then((response) => {
-    console.log(response)
     if (response.data.jwt) {
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("jwt", JSON.stringify(response.data.jwt));
@@ -25,7 +24,6 @@ const login = (email, password) => {
   return axios
     .post(API_URL + "/login", { user: { email, password } })
     .then((response) => {
-      console.log(response)
       if (response.data.jwt) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("jwt", JSON.stringify(response.data.jwt));

@@ -10,7 +10,6 @@ import {
   export const register = (email, name, password, password_confirmation, phone_no, address) => (dispatch) => {
     return AuthService.register(email, name, password, password_confirmation, phone_no, address).then(
       (response) => {
-        console.log(response)
         dispatch({
           type: REGISTER_SUCCESS,
           payload: { user: response },

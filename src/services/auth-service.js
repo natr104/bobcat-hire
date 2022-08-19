@@ -11,6 +11,14 @@ const register = (email, name, password, password_confirmation, phone_no, addres
       phone_no,
       address
     }
+  })
+  .then((response) => {
+    console.log(response)
+    if (response.data.jwt) {
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("jwt", JSON.stringify(response.data.jwt));
+    };
+    return response.data;
   });
 };
 const login = (email, password) => {
@@ -21,7 +29,7 @@ const login = (email, password) => {
       if (response.data.jwt) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("jwt", JSON.stringify(response.data.jwt));
-      }
+      };
       return response.data;
     });
 };

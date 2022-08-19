@@ -44,7 +44,7 @@ export default function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
         setSuccessful(false);
-        dispatch(register(name, email, password, passwordConfirmation, phoneNo, address))
+        dispatch(register(email, name, password, passwordConfirmation, phoneNo, address))
             .then(() => {
                 setSuccessful(true);
             })

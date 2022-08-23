@@ -1,12 +1,9 @@
 import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Typography, Paper } from "@mui/material";
-import { useSelector } from "react-redux";
 
 
+export default function CustomerQuotesTable({userJobs}) {
 
-export default function CustomerQuotesTable() {
-
-    const { user: currentUser } = useSelector((state) => state.auth)
-    const user_jobs = currentUser.user.jobs
+    console.log(userJobs)
 
     return (
         <TableContainer component={Paper} sx={{ mt: 8 }}>
@@ -23,11 +20,11 @@ export default function CustomerQuotesTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {user_jobs.map((row) => (
+                    {userJobs.map((row) => (
                         <TableRow key={row.id}>
                             <TableCell>{row.date_time}</TableCell>
                             <TableCell>{row.address}</TableCell>
-                            <TableCell>{row.category_id}</TableCell>
+                            <TableCell>{row.category.name}</TableCell>
                             <TableCell>{row.comment}</TableCell>
                             {/* <TableCell>{row.hours}</TableCell>
                             <TableCell align="right">{`$${row.price}`}</TableCell> */}

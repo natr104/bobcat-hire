@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 export default function Profile() {
     
     const { user: currentUser } = useSelector((state) => state.auth);
-    console.log(currentUser)
+
     if (!currentUser) {
         return <Navigate to='/login' />
     }

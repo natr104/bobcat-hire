@@ -12,7 +12,7 @@ import {
       (response) => {
         dispatch({
           type: REGISTER_SUCCESS,
-          payload: { user: response },
+          payload: response,
         });
         dispatch({
           type: SET_MESSAGE,
@@ -43,7 +43,7 @@ import {
       (data) => {
         dispatch({
           type: LOGIN_SUCCESS,
-          payload: { user: data },
+          payload: data,
         });
         return Promise.resolve();
       },

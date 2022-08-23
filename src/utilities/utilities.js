@@ -1,12 +1,12 @@
-const API_URL = 'http://127.0.0.1:3000/api/v1'
+export const API_URL = 'http://127.0.0.1:3000/api/v1/'
 
-export async function fetchUserProfile({user_id}) {
-    const userURL = API_URL+`Users/${user_id}`;
+export async function fetchUserJobs({userId}) {
+    const userURL = API_URL+`users/${userId}/jobs`;
 
     try {
         const response = await fetch(userURL);
-        const profile = await response.json();
-        return profile;
+        const data = await response.json();
+        return data;
     } catch(error) {
         alert(error);
     }

@@ -27,6 +27,7 @@ export default function CustomerQuotes() {
         } else {
             return <Navigate to='/login' />
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     

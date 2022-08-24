@@ -16,6 +16,7 @@ export default function Register() {
     const { message } = useSelector(state => state.message)
     const { isLoggedIn } = useSelector((state) => state.auth);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onChangeName = (e) => {
         const name = e.target.value;
@@ -41,7 +42,6 @@ export default function Register() {
         const address = e.target.value;
         setAddress(address);
     }
-    const dispatch = useDispatch();
     const handleRegister = (e) => {
         e.preventDefault();
         setSuccessful(false);

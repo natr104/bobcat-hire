@@ -123,7 +123,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link component={RouterLink} to='/request_quote' variant="body2" underline="none" sx={{ my: 2, color: 'white', display: 'block' }}>REQUEST QUOTE</Link>
           </Box>
-
+          {/* account menu starts here */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

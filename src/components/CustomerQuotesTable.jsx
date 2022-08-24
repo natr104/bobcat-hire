@@ -3,8 +3,6 @@ import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Typog
 
 export default function CustomerQuotesTable({userJobs}) {
 
-    console.log(userJobs)
-
     return (
         <TableContainer component={Paper} sx={{ mt: 8 }}>
             <Typography component="h2" variant="h6" color="primary" gutterBottom>Your Quotes</Typography>

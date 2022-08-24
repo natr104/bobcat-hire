@@ -33,13 +33,13 @@ export default function LoginPage() {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(login(username, password))
-        .then(() => {
-            navigate('/profile');
-        })
+            .then(() => {
+                navigate('/profile');
+            })
     }
-if (isLoggedIn) {
-    return <Navigate to="/profile" replace={true} />;
-}
+    if (isLoggedIn) {
+        return <Navigate to="/profile" replace={true} />;
+    }
 return (
     <Box sx={{ width: ["auto", 400], mx: "auto" }}>
         <Paper
@@ -56,7 +56,7 @@ return (
                 <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-                Sign in
+                Sign In
             </Typography>
             <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
                 <TextField

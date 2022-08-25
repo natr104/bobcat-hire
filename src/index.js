@@ -7,7 +7,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import store from './store'
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 
 const theme = createTheme({
@@ -29,11 +31,13 @@ root.render(
   <React.StrictMode>
     <CssBaseline />
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <BrowserRouter>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </BrowserRouter>
+      </LocalizationProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -1,17 +1,17 @@
-import { Paper, Box, TextField, Select, InputLabel, FormControl, MenuItem } from "@mui/material";
+import { Paper, Box, TextField, Select, InputLabel, FormControl, MenuItem, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { API_URL } from "../utilities/utilities";
 import { Navigate } from "react-router-dom";
-
-import { DateTimePickerElement, FormContainer } from "react-hook-form-mui";
+import { DatePickerElement, DateTimePickerElement, FormContainer } from "react-hook-form-mui";
+import { DateTimePicker } from "@mui/x-date-pickers";
 
 export default function QuoteRequest() {
 
     const [ categories, setCategories ] = useState([]);
     const [ isLoaded, setIsLoaded ] = useState(false);
-    const { control, handleSubmit } = useForm({
+    const { register, control, handleSubmit } = useForm({
         defaultValues: {
             address: ''
         }
@@ -52,7 +52,7 @@ export default function QuoteRequest() {
                     alignItems: "center",
                     p: 3,
                 }}>
-                <h2>Quote</h2>
+                <Typography variant="h5">Request Quote</Typography>
 
                 {isLoaded ? <div>
                     <FormControl sx={{ mt: 2, minWidth: 220 }}>
@@ -60,8 +60,13 @@ export default function QuoteRequest() {
                     </FormControl>
                     <FormContainer defaultValues={{date_time: '', address: '', comment: ''}} onSuccess={handleSubmit(onSubmit)}>
                     <FormControl sx={{ mt: 2, minWidth: 220 }}>  
-                        <DateTimePickerElement name="date_time" label="Date & Time" minDateTime={new Date()} inputFormat="dd/MM/yyyy hh:mm a" required></DateTimePickerElement>
+                        <Controller
+                            name="date_time"
+                            control={control}
+                            render={({ field }) => <DateTimePicker {...field} label="Date & Time" minDateTime={new Date()} inputFormat="dd/MM/yyyy hh:mm a" renderInput={(props) => <TextField {...props} />}/> }
+                        />
                     </FormControl>
+
                         <Controller
                             name="address"
                             control={control}
@@ -79,7 +84,8 @@ export default function QuoteRequest() {
                             control={control}
                             render={({ field }) => <FormControl sx={{ mt: 2, minWidth: 220 }}><TextField {...field} multiline label="Comment" variant="standard" /></FormControl>}
                             />
-                        <input type="submit"/>
+                        <br />
+                        <Button type={'submit'} variant={'contained'} sx={{ mt: 2 }}>Submit</Button>
                     </FormContainer></div>: <h2> Loading...</h2>}
                             
             </Paper>

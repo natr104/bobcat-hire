@@ -58,15 +58,15 @@ export default function QuoteRequest() {
                     <FormControl sx={{ mt: 2, minWidth: 220 }}>
                         <TextField disabled label="Name" variant="standard" defaultValue={currentUser.name} />
                     </FormControl>
-                    <FormContainer defaultValues={{ date_time: '', address: '', comment: '' }} onSuccess={handleSubmit(onSubmit)}>
+                    <FormContainer defaultValues={{ date_time: '', address: '', comment: '', category: "" }} onSuccess={handleSubmit(onSubmit)}>
                         <FormControl sx={{ mt: 2, minWidth: 220 }}>
                             <Controller
                                 name="date_time"
                                 control={control}
-                                render={({ field }) => <DateTimePicker {...field} label="Date & Time" minDateTime={new Date()} inputFormat="dd/MM/yyyy hh:mm a" renderInput={(props) => <TextField {...props} />} />}
+                                render={({ field }) => <DateTimePicker {...field} label="Date & Time" minDateTime={new Date()} required inputFormat="dd/MM/yyyy hh:mm a" renderInput={(props) => <TextField {...props} required/>} />}
                             />
                         </FormControl>
-
+                        <br />
                         <Controller
                             name="address"
                             control={control}
@@ -76,7 +76,14 @@ export default function QuoteRequest() {
                         <Controller
                             name="category"
                             control={control}
-                            render={({ field }) => <FormControl sx={{ mt: 3, minWidth: 220, textAlign: 'left' }}><InputLabel>Category</InputLabel><Select {...field} required label="Category">{categories.map((cat) => (<MenuItem key={cat.id} value={cat.id}>{`${cat.name}`}</MenuItem>))}</Select></FormControl>}
+                            render={({ field }) => 
+                                <FormControl sx={{ mt: 3, minWidth: 220, textAlign: 'left' }}>
+                                    <InputLabel>Category</InputLabel>
+                                    <Select {...field} required defaultValue="" label="Category">
+                                        {categories.map((cat) => (<MenuItem key={cat.id} value={cat.id}>{`${cat.name}`}</MenuItem>))}
+                                    </Select>
+                                </FormControl>
+                            }
                         />
                         <br />
                         <Controller

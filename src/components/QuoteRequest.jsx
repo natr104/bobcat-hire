@@ -22,7 +22,7 @@ export default function QuoteRequest() {
         UserService.createJob(data)
         .then((response)=> {
             const jobID = response.data.id;
-            navigate(`/jobs/${jobID}`);
+            navigate(`/quotes/${jobID}`);
         });
     };
     const { user: currentUser, jwt } = useSelector((state) => state.auth);

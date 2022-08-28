@@ -3,22 +3,27 @@ import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { API_URL } from "../utilities/utilities";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { FormContainer } from "react-hook-form-mui";
 import { DateTimePicker } from "@mui/x-date-pickers";
+import UserService from '../services/user-service'
 
 export default function QuoteRequest() {
 
     const [categories, setCategories] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const navigate = useNavigate();
     const { control, handleSubmit } = useForm({
         defaultValues: {
             address: ''
         }
     });
     const onSubmit = (data) => {
-        const job = JSON.stringify({ "job": data })
-        console.log(job)
+        UserService.createJob(data)
+        .then((response)=> {
+            const jobID = response.data.id;
+            navigate(`/jobs/${jobID}`);
+        });
     };
     const { user: currentUser, jwt } = useSelector((state) => state.auth);
     useEffect(() => {
@@ -74,7 +79,7 @@ export default function QuoteRequest() {
                         />
                         <br />
                         <Controller
-                            name="category"
+                            name="category_id"
                             control={control}
                             render={({ field }) => 
                                 <FormControl sx={{ mt: 3, minWidth: 220, textAlign: 'left' }}>

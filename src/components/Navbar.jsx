@@ -149,7 +149,7 @@ const Navbar = () => {
               <Link component={RouterLink} to='/profile' textAlign="center" color="inherit" underline="none">
                 <MenuItem key={'Account'} onClick={handleCloseUserMenu}>Account</MenuItem>
               </Link> 
-              <Link component={RouterLink} to='/your_quotes' textAlign="center" color="inherit" underline="none">
+              <Link component={RouterLink} to='/quotes' textAlign="center" color="inherit" underline="none">
                 <MenuItem key={'Your Quotes'} onClick={handleCloseUserMenu}>Your Quotes</MenuItem>
               </Link> 
               <Link component={RouterLink} to='/login' textAlign="center" color="inherit" underline="none">

@@ -7,6 +7,8 @@ import Register from './components/Register';
 import QuoteRequest from './components/QuoteRequest'
 import Profile from './components/Profile';
 import CustomerQuotes from './components/CustomerQuotes';
+import CustomerQuotesParent from './components/CustomerQuotesParent';
+import Job from './components/Job';
 
 function App() {
   return (
@@ -18,7 +20,11 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='request_quote' element={<QuoteRequest />} />
           <Route path='profile' element={<Profile />} />
-          <Route path='your_quotes' element={<CustomerQuotes />} />
+          <Route path='quotes' element={<CustomerQuotesParent />}>
+            <Route index element={<CustomerQuotes />}/>
+            <Route path=':jobId' element={<Job />}/>
+          </Route>
+
           
         </Route>
 

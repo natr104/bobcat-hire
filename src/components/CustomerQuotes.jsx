@@ -32,8 +32,10 @@ export default function CustomerQuotes() {
 
     
     return (
+
             <div>
-                { isLoaded? <CustomerQuotesTable userJobs={userJobs} /> : <h2>Loading</h2> }
+                
+                { isLoaded? <CustomerQuotesTable userJobs={userJobs} setUserJobs={setUserJobs} /> : <h2>Loading</h2> }
             </div>
     )
 }

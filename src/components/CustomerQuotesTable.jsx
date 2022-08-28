@@ -1,8 +1,17 @@
 import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Typography, Paper } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Link as MLink } from '@mui/material'
 import { dateTimeFormat } from "../utilities/utilities";
+import userService from '../services/user-service'
 
 
-export default function CustomerQuotesTable({userJobs}) {
+export default function CustomerQuotesTable({userJobs, setUserJobs}) {
+
+    const handleDelete = (id) => {
+        userService.deleteJob(id)
+        setUserJobs(jobs => jobs.filter((job) => job.id != id ))
+        console.log(userJobs)
+    }
 
     return (
         <TableContainer component={Paper} sx={{ mt: 8 }}>
@@ -25,8 +34,11 @@ export default function CustomerQuotesTable({userJobs}) {
                             <TableCell>{row.address}</TableCell>
                             <TableCell>{row.category.name}</TableCell>
                             <TableCell>{row.comment}</TableCell>
-                            {/* <TableCell>{row.hours}</TableCell>
-                            <TableCell align="right">{`$${row.price}`}</TableCell> */}
+                            <TableCell>Hours</TableCell>
+                            <TableCell align="right">{`$price`}</TableCell>
+                            <TableCell><Link to={`/quotes/${row.id}`}>View</Link></TableCell>
+                            <TableCell><Link to={`/quotes/${row.id}/edit`}>Edit</Link></TableCell>
+                            <TableCell><MLink href="#" onClick={()=> handleDelete(row.id)}>Delete</MLink></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

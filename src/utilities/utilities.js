@@ -17,3 +17,8 @@ export async function fetchUserJobs({userId}) {
 export function dateTimeFormat(dateTime) {
     return format(parseISO(dateTime), 'PPPP p')
 }
+
+export function isAdmin() {
+    const currentUser = JSON.parse(localStorage.getItem('user'))
+    return currentUser.admin
+}

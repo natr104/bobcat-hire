@@ -10,12 +10,22 @@ const getJob = (jobId) => {
     return axios.get(API_URL + `/jobs/${jobId}`, { headers: authHeader() })
 }
 
+const getJobs = () => {
+    return axios.get(API_URL + `/jobs`, { headers: authHeader() })
+}
+
 const deleteJob = (jobId) => {
     return axios.delete(API_URL + `/jobs/${jobId}`, { headers: authHeader() })
+}
+
+const addQuote = (jobId, quote) => {
+    return axios.post(API_URL + '/quotes/', {'quote': quote, 'job_id': jobId}, { headers: authHeader() })
 }
 
 export default {
     createJob,
     getJob,
-    deleteJob
+    getJobs,
+    deleteJob,
+    addQuote
 };

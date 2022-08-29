@@ -22,3 +22,8 @@ export function isAdmin() {
     const currentUser = JSON.parse(localStorage.getItem('user'))
     return currentUser.admin
 }
+
+export function currentUser() {
+    const currentUser = JSON.parse(localStorage.getItem('user'))
+    return currentUser
+}

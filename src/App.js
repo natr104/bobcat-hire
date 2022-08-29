@@ -9,6 +9,10 @@ import Profile from './components/Profile';
 import CustomerQuotes from './components/CustomerQuotes';
 import CustomerQuotesParent from './components/CustomerQuotesParent';
 import Job from './components/Job';
+import RequireAdmin from './components/RequireAdmin';
+import AdminDashboard from './components/AdminDashboard';
+import AdminParent from './components/AdminParent';
+import AdminAddQuote from './components/AdminAddQuote';
 
 function App() {
   return (
@@ -21,13 +25,19 @@ function App() {
           <Route path='request_quote' element={<QuoteRequest />} />
           <Route path='profile' element={<Profile />} />
           <Route path='quotes' element={<CustomerQuotesParent />}>
-            <Route index element={<CustomerQuotes />}/>
-            <Route path=':jobId' element={<Job />}/>
+            <Route index element={<CustomerQuotes />} />
+            <Route path=':jobId' element={<Job />} />
           </Route>
-
-          
+          <Route element={<RequireAdmin />}>
+            <Route path='admin' element={<AdminParent />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path='jobs/:jobId' element={<AdminParent />}>
+                <Route index element={<Job />} />
+                <Route path='add_quote' element={<AdminAddQuote />} />
+              </Route>
+            </Route>
+          </Route>
         </Route>
-
       </Routes>
     </div>
   );

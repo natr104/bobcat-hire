@@ -12,15 +12,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink } from 'react-router-dom'
 import { Link } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../actions/auth';
+import { isAdmin, currentUser } from '../utilities/utilities';
 
 const pages = ['Services', 'Request Quote', 'Contact Us'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const { user: currentUser } = useSelector((state) => state.auth)
 
   const dispatch = useDispatch();
 
@@ -95,6 +95,7 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+              {/* mobile links menu items here */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -120,43 +121,55 @@ const Navbar = () => {
           >
             LOGO
           </Typography>
+          {/* Large screen nav bar links here */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link component={RouterLink} to='/request_quote' variant="body2" underline="none" sx={{ my: 2, color: 'white', display: 'block' }}>REQUEST QUOTE</Link>
+            {currentUser() && isAdmin()? 
+              <Link component={RouterLink} to='/admin' variant="body2" underline="none" sx={{ my: 2, color: 'white', display: 'block' }}>ADMIN DASHBOARD</Link> 
+              : 
+              <Link component={RouterLink} to='/request_quote' variant="body2" underline="none" sx={{ my: 2, color: 'white', display: 'block' }}>REQUEST QUOTE</Link>
+            }
           </Box>
           {/* account menu starts here */}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Bobcat" variant="square" src={require("../assets/bobcat-icon-128px.png")} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <Link component={RouterLink} to='/profile' textAlign="center" color="inherit" underline="none">
-                <MenuItem key={'Account'} onClick={handleCloseUserMenu}>Account</MenuItem>
-              </Link> 
-              <Link component={RouterLink} to='/quotes' textAlign="center" color="inherit" underline="none">
-                <MenuItem key={'Your Quotes'} onClick={handleCloseUserMenu}>Your Quotes</MenuItem>
-              </Link> 
-              <Link component={RouterLink} to='/login' textAlign="center" color="inherit" underline="none">
-                <MenuItem key={'Logout'} onClick={logOut}>Logout</MenuItem>
-              </Link>
-            </Menu>
-          </Box>
+          {currentUser()? 
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Bobcat" variant="square" src={require("../assets/bobcat-icon-128px.png")} />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <Link component={RouterLink} to='/profile' textAlign="center" color="inherit" underline="none">
+                  <MenuItem key={'Account'} onClick={handleCloseUserMenu}>Account</MenuItem>
+                </Link> 
+                {!isAdmin()? (<Link component={RouterLink} to='/quotes' textAlign="center" color="inherit" underline="none">
+                  <MenuItem key={'Your Quotes'} onClick={handleCloseUserMenu}>Your Quotes</MenuItem>
+                </Link>) : null}
+                <Link component={RouterLink} to='/login' textAlign="center" color="inherit" underline="none">
+                  <MenuItem key={'Logout'} onClick={logOut}>Logout</MenuItem>
+                </Link>
+              </Menu>
+            </Box> 
+          : 
+            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+              <Link component={RouterLink} to='/register' variant="body2" underline="none" sx={{ my: 2, mx: 1, color: 'white', display: 'block' }}>REGISTER</Link> 
+              <Link component={RouterLink} to='/login' variant="body2" underline="none" sx={{ my: 2, mx: 1, color: 'white', display: 'block' }}>LOG IN</Link>
+            </Box>
+          }
         </Toolbar>
       </Container>
     </AppBar>

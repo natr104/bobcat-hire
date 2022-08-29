@@ -107,6 +107,7 @@ export default function Register() {
                     <TextField
                         margin="normal"
                         fullWidth
+                        required
                         id="phone-no"
                         label="Phone Number"
                         name="phone-no"

@@ -34,8 +34,8 @@ export default function CustomerQuotesTable({userJobs, setUserJobs}) {
                             <TableCell>{row.address}</TableCell>
                             <TableCell>{row.category.name}</TableCell>
                             <TableCell>{row.comment}</TableCell>
-                            <TableCell>{row.quote.hours}</TableCell>
-                            <TableCell align="right">{row.quote.price}</TableCell>
+                            <TableCell>{row.quote?.hours}</TableCell>
+                            <TableCell align="right">{row.quote?.price}</TableCell>
                             <TableCell><Link to={`/quotes/${row.id}`}>View</Link></TableCell>
                             <TableCell><Link to={`/quotes/${row.id}/edit`}>Edit</Link></TableCell>
                             <TableCell><MLink href="#" onClick={()=> handleDelete(row.id)}>Delete</MLink></TableCell>
